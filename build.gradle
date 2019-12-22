@@ -10,7 +10,7 @@ allprojects {
 }
 
 subprojects {
-	group = 'com.mkaiho.learning.vide-encoder-java'
+	group = 'com.mkaiho.learning.video-encoder-java'
 	version  = '0.0.1-SNAPSHOT'
 
 	apply plugin: 'org.springframework.boot'
