@@ -1,0 +1,3 @@
+bootJar {
+  mainClassName = 'com.mkaiho.learning.videoencoder.webapi.WebApiApplication'
+}

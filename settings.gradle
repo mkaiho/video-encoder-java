@@ -1,1 +1,4 @@
 rootProject.name = 'video-encoder-java'
+include 'core'
+include 'webapi'
+include 'batch'

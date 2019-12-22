@@ -1,24 +1,49 @@
 plugins {
 	id 'org.springframework.boot' version '2.2.2.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
-	id 'java'
 }
 
-group = 'com.mkaiho.learning'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
-
-repositories {
-	mavenCentral()
-}
-
-dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+allprojects {
+	repositories {
+		jcenter()
 	}
 }
 
-test {
-	useJUnitPlatform()
+subprojects {
+	group = 'com.mkaiho.learning.vide-encoder-java'
+	version  = '0.0.1-SNAPSHOT'
+
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+	apply plugin: 'java'
+
+	sourceCompatibility = JavaVersion.VERSION_11
+	targetCompatibility = JavaVersion.VERSION_11
+
+	dependencies {
+		implementation 'org.springframework.boot:spring-boot-starter'
+		testImplementation('org.springframework.boot:spring-boot-starter-test') {
+			exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+		}
+	}
+
+	test {
+		useJUnitPlatform()
+	}
+}
+
+project(':webapi') {
+	dependencies {
+		implementation project(':core')
+	}
+}
+
+project(':batch') {
+	dependencies {
+		implementation project(':core')
+	}
+}
+
+wrapper {
+  gradleVersion = "6.0.1"
 }
